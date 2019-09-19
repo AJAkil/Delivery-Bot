@@ -1,0 +1,1707 @@
+
+ACTUAL_CODE_V_2.0.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000009be  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000490  00800060  000009be  00000a52  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000e  008004f0  008004f0  00000ee2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000ee2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000f14  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000128  00000000  00000000  00000f50  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001c58  00000000  00000000  00001078  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000083e  00000000  00000000  00002cd0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000cfd  00000000  00000000  0000350e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000340  00000000  00000000  0000420c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006f8  00000000  00000000  0000454c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000ba5  00000000  00000000  00004c44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000130  00000000  00000000  000057e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 c5 00 	jmp	0x18a	; 0x18a <__vector_1>
+   8:	0c 94 85 00 	jmp	0x10a	; 0x10a <__vector_2>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	14 e0       	ldi	r17, 0x04	; 4
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ee eb       	ldi	r30, 0xBE	; 190
+  68:	f9 e0       	ldi	r31, 0x09	; 9
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 3f       	cpi	r26, 0xF0	; 240
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	24 e0       	ldi	r18, 0x04	; 4
+  78:	a0 ef       	ldi	r26, 0xF0	; 240
+  7a:	b4 e0       	ldi	r27, 0x04	; 4
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 3f       	cpi	r26, 0xFE	; 254
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 7b 02 	call	0x4f6	; 0x4f6 <main>
+  8a:	0c 94 dd 04 	jmp	0x9ba	; 0x9ba <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <UART_init>:
+
+void set_duty2_non_inverted(unsigned char c){
+    OCR2 = (255*c/100);
+}
+void set_duty2_inverted(unsigned char c){
+    OCR2 = 255*(1 - c/100);
+  92:	82 e0       	ldi	r24, 0x02	; 2
+  94:	8b b9       	out	0x0b, r24	; 11
+  96:	88 e1       	ldi	r24, 0x18	; 24
+  98:	8a b9       	out	0x0a, r24	; 10
+  9a:	86 e8       	ldi	r24, 0x86	; 134
+  9c:	80 bd       	out	0x20, r24	; 32
+  9e:	8c e0       	ldi	r24, 0x0C	; 12
+  a0:	89 b9       	out	0x09, r24	; 9
+  a2:	10 bc       	out	0x20, r1	; 32
+  a4:	08 95       	ret
+
+000000a6 <UART_send>:
+  a6:	5d 9b       	sbis	0x0b, 5	; 11
+  a8:	fe cf       	rjmp	.-4      	; 0xa6 <UART_send>
+  aa:	8c b9       	out	0x0c, r24	; 12
+  ac:	08 95       	ret
+
+000000ae <UART_send_string>:
+  ae:	cf 93       	push	r28
+  b0:	df 93       	push	r29
+  b2:	ec 01       	movw	r28, r24
+  b4:	88 81       	ld	r24, Y
+  b6:	88 23       	and	r24, r24
+  b8:	31 f0       	breq	.+12     	; 0xc6 <UART_send_string+0x18>
+  ba:	21 96       	adiw	r28, 0x01	; 1
+  bc:	0e 94 53 00 	call	0xa6	; 0xa6 <UART_send>
+  c0:	89 91       	ld	r24, Y+
+  c2:	81 11       	cpse	r24, r1
+  c4:	fb cf       	rjmp	.-10     	; 0xbc <UART_send_string+0xe>
+  c6:	df 91       	pop	r29
+  c8:	cf 91       	pop	r28
+  ca:	08 95       	ret
+
+000000cc <UART_receive_string>:
+  cc:	ac 01       	movw	r20, r24
+  ce:	16 16       	cp	r1, r22
+  d0:	17 06       	cpc	r1, r23
+  d2:	64 f4       	brge	.+24     	; 0xec <UART_receive_string+0x20>
+  d4:	fc 01       	movw	r30, r24
+  d6:	9c 01       	movw	r18, r24
+  d8:	26 0f       	add	r18, r22
+  da:	37 1f       	adc	r19, r23
+  dc:	5f 9b       	sbis	0x0b, 7	; 11
+  de:	fe cf       	rjmp	.-4      	; 0xdc <UART_receive_string+0x10>
+  e0:	9c b1       	in	r25, 0x0c	; 12
+  e2:	91 93       	st	Z+, r25
+  e4:	e2 17       	cp	r30, r18
+  e6:	f3 07       	cpc	r31, r19
+  e8:	c9 f7       	brne	.-14     	; 0xdc <UART_receive_string+0x10>
+  ea:	02 c0       	rjmp	.+4      	; 0xf0 <UART_receive_string+0x24>
+  ec:	60 e0       	ldi	r22, 0x00	; 0
+  ee:	70 e0       	ldi	r23, 0x00	; 0
+  f0:	fa 01       	movw	r30, r20
+  f2:	e6 0f       	add	r30, r22
+  f4:	f7 1f       	adc	r31, r23
+  f6:	10 82       	st	Z, r1
+  f8:	08 95       	ret
+
+000000fa <init_pwm0_phase_mode_non_inverted>:
+  fa:	81 e6       	ldi	r24, 0x61	; 97
+  fc:	83 bf       	out	0x33, r24	; 51
+  fe:	bb 9a       	sbi	0x17, 3	; 23
+ 100:	08 95       	ret
+
+00000102 <init_pwm2_phase_mode_non_inverted>:
+ 102:	81 e6       	ldi	r24, 0x61	; 97
+ 104:	85 bd       	out	0x25, r24	; 37
+ 106:	8f 9a       	sbi	0x11, 7	; 17
+ 108:	08 95       	ret
+
+0000010a <__vector_2>:
+
+/************************************************************************/
+/* Interrupt for left rotation                                                                     */
+/************************************************************************/
+ISR(INT1_vect)
+{
+ 10a:	1f 92       	push	r1
+ 10c:	0f 92       	push	r0
+ 10e:	0f b6       	in	r0, 0x3f	; 63
+ 110:	0f 92       	push	r0
+ 112:	11 24       	eor	r1, r1
+ 114:	2f 93       	push	r18
+ 116:	3f 93       	push	r19
+ 118:	4f 93       	push	r20
+ 11a:	5f 93       	push	r21
+ 11c:	6f 93       	push	r22
+ 11e:	7f 93       	push	r23
+ 120:	8f 93       	push	r24
+ 122:	9f 93       	push	r25
+ 124:	af 93       	push	r26
+ 126:	bf 93       	push	r27
+ 128:	ef 93       	push	r30
+ 12a:	ff 93       	push	r31
+	global_count++;
+ 12c:	80 91 f6 04 	lds	r24, 0x04F6	; 0x8004f6 <global_count>
+ 130:	90 91 f7 04 	lds	r25, 0x04F7	; 0x8004f7 <global_count+0x1>
+ 134:	01 96       	adiw	r24, 0x01	; 1
+ 136:	90 93 f7 04 	sts	0x04F7, r25	; 0x8004f7 <global_count+0x1>
+ 13a:	80 93 f6 04 	sts	0x04F6, r24	; 0x8004f6 <global_count>
+	itoa(global_count, rotation, 10);
+ 13e:	80 91 f6 04 	lds	r24, 0x04F6	; 0x8004f6 <global_count>
+ 142:	90 91 f7 04 	lds	r25, 0x04F7	; 0x8004f7 <global_count+0x1>
+    } else if (__radix < 2 || __radix > 36) {
+	*__s = 0;
+	return __s;
+    } else {
+	extern char *__itoa_ncheck (int, char *, unsigned char);
+	return __itoa_ncheck (__val, __s, __radix);
+ 146:	4a e0       	ldi	r20, 0x0A	; 10
+ 148:	68 ef       	ldi	r22, 0xF8	; 248
+ 14a:	74 e0       	ldi	r23, 0x04	; 4
+ 14c:	0e 94 a0 04 	call	0x940	; 0x940 <__itoa_ncheck>
+	UART_send_string("Left Rotations: ");
+ 150:	80 e9       	ldi	r24, 0x90	; 144
+ 152:	90 e0       	ldi	r25, 0x00	; 0
+ 154:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string(rotation);
+ 158:	88 ef       	ldi	r24, 0xF8	; 248
+ 15a:	94 e0       	ldi	r25, 0x04	; 4
+ 15c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("\n");
+ 160:	83 ef       	ldi	r24, 0xF3	; 243
+ 162:	90 e0       	ldi	r25, 0x00	; 0
+ 164:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+}
+ 168:	ff 91       	pop	r31
+ 16a:	ef 91       	pop	r30
+ 16c:	bf 91       	pop	r27
+ 16e:	af 91       	pop	r26
+ 170:	9f 91       	pop	r25
+ 172:	8f 91       	pop	r24
+ 174:	7f 91       	pop	r23
+ 176:	6f 91       	pop	r22
+ 178:	5f 91       	pop	r21
+ 17a:	4f 91       	pop	r20
+ 17c:	3f 91       	pop	r19
+ 17e:	2f 91       	pop	r18
+ 180:	0f 90       	pop	r0
+ 182:	0f be       	out	0x3f, r0	; 63
+ 184:	0f 90       	pop	r0
+ 186:	1f 90       	pop	r1
+ 188:	18 95       	reti
+
+0000018a <__vector_1>:
+
+/************************************************************************/
+/* Interrupt for right rotation                                                                     */
+/************************************************************************/
+ISR(INT0_vect)
+{
+ 18a:	1f 92       	push	r1
+ 18c:	0f 92       	push	r0
+ 18e:	0f b6       	in	r0, 0x3f	; 63
+ 190:	0f 92       	push	r0
+ 192:	11 24       	eor	r1, r1
+ 194:	2f 93       	push	r18
+ 196:	3f 93       	push	r19
+ 198:	4f 93       	push	r20
+ 19a:	5f 93       	push	r21
+ 19c:	6f 93       	push	r22
+ 19e:	7f 93       	push	r23
+ 1a0:	8f 93       	push	r24
+ 1a2:	9f 93       	push	r25
+ 1a4:	af 93       	push	r26
+ 1a6:	bf 93       	push	r27
+ 1a8:	ef 93       	push	r30
+ 1aa:	ff 93       	push	r31
+	left_global_count++;
+ 1ac:	80 91 f4 04 	lds	r24, 0x04F4	; 0x8004f4 <left_global_count>
+ 1b0:	90 91 f5 04 	lds	r25, 0x04F5	; 0x8004f5 <left_global_count+0x1>
+ 1b4:	01 96       	adiw	r24, 0x01	; 1
+ 1b6:	90 93 f5 04 	sts	0x04F5, r25	; 0x8004f5 <left_global_count+0x1>
+ 1ba:	80 93 f4 04 	sts	0x04F4, r24	; 0x8004f4 <left_global_count>
+	itoa(left_global_count, rotation, 10);
+ 1be:	80 91 f4 04 	lds	r24, 0x04F4	; 0x8004f4 <left_global_count>
+ 1c2:	90 91 f5 04 	lds	r25, 0x04F5	; 0x8004f5 <left_global_count+0x1>
+ 1c6:	4a e0       	ldi	r20, 0x0A	; 10
+ 1c8:	68 ef       	ldi	r22, 0xF8	; 248
+ 1ca:	74 e0       	ldi	r23, 0x04	; 4
+ 1cc:	0e 94 a0 04 	call	0x940	; 0x940 <__itoa_ncheck>
+	UART_send_string("Right Rotations: ");
+ 1d0:	81 ea       	ldi	r24, 0xA1	; 161
+ 1d2:	90 e0       	ldi	r25, 0x00	; 0
+ 1d4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string(rotation);
+ 1d8:	88 ef       	ldi	r24, 0xF8	; 248
+ 1da:	94 e0       	ldi	r25, 0x04	; 4
+ 1dc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("\n");
+ 1e0:	83 ef       	ldi	r24, 0xF3	; 243
+ 1e2:	90 e0       	ldi	r25, 0x00	; 0
+ 1e4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+}
+ 1e8:	ff 91       	pop	r31
+ 1ea:	ef 91       	pop	r30
+ 1ec:	bf 91       	pop	r27
+ 1ee:	af 91       	pop	r26
+ 1f0:	9f 91       	pop	r25
+ 1f2:	8f 91       	pop	r24
+ 1f4:	7f 91       	pop	r23
+ 1f6:	6f 91       	pop	r22
+ 1f8:	5f 91       	pop	r21
+ 1fa:	4f 91       	pop	r20
+ 1fc:	3f 91       	pop	r19
+ 1fe:	2f 91       	pop	r18
+ 200:	0f 90       	pop	r0
+ 202:	0f be       	out	0x3f, r0	; 63
+ 204:	0f 90       	pop	r0
+ 206:	1f 90       	pop	r1
+ 208:	18 95       	reti
+
+0000020a <leftRotate>:
+
+
+void leftRotate()
+{
+ 20a:	cf 93       	push	r28
+ 20c:	df 93       	push	r29
+ 20e:	cd b7       	in	r28, 0x3d	; 61
+ 210:	de b7       	in	r29, 0x3e	; 62
+ 212:	2f 97       	sbiw	r28, 0x0f	; 15
+ 214:	0f b6       	in	r0, 0x3f	; 63
+ 216:	f8 94       	cli
+ 218:	de bf       	out	0x3e, r29	; 62
+ 21a:	0f be       	out	0x3f, r0	; 63
+ 21c:	cd bf       	out	0x3d, r28	; 61
+	global_count = 0;
+ 21e:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 222:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+	char buffer[15];
+	UART_send_string("Input rotation degree as multiple of 18\n");
+ 226:	83 eb       	ldi	r24, 0xB3	; 179
+ 228:	90 e0       	ldi	r25, 0x00	; 0
+ 22a:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("For 36 degree input 002\n");
+ 22e:	8c ed       	ldi	r24, 0xDC	; 220
+ 230:	90 e0       	ldi	r25, 0x00	; 0
+ 232:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("For 90 degree input 005\n");
+ 236:	85 ef       	ldi	r24, 0xF5	; 245
+ 238:	90 e0       	ldi	r25, 0x00	; 0
+ 23a:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("Your Input: ");
+ 23e:	8e e0       	ldi	r24, 0x0E	; 14
+ 240:	91 e0       	ldi	r25, 0x01	; 1
+ 242:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_receive_string(buffer,3);
+ 246:	63 e0       	ldi	r22, 0x03	; 3
+ 248:	70 e0       	ldi	r23, 0x00	; 0
+ 24a:	ce 01       	movw	r24, r28
+ 24c:	01 96       	adiw	r24, 0x01	; 1
+ 24e:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+	buffer[3]='\0';
+ 252:	1c 82       	std	Y+4, r1	; 0x04
+
+	int leftTurnRequiredRotation=atoi(buffer);
+ 254:	ce 01       	movw	r24, r28
+ 256:	01 96       	adiw	r24, 0x01	; 1
+ 258:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+
+	/************************************************************************/
+	/* car starts to rotate                                                                     */
+	/************************************************************************/
+
+	PORTB = PORTB | (1<<1);
+ 25c:	c1 9a       	sbi	0x18, 1	; 24
+	PORTB = PORTB | (1<<5);
+ 25e:	c5 9a       	sbi	0x18, 5	; 24
+	PORTB = PORTB & ~(1<<2);
+ 260:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<4);
+ 262:	c4 98       	cbi	0x18, 4	; 24
+
+	while(global_count<leftTurnRequiredRotation){}
+ 264:	20 91 f6 04 	lds	r18, 0x04F6	; 0x8004f6 <global_count>
+ 268:	30 91 f7 04 	lds	r19, 0x04F7	; 0x8004f7 <global_count+0x1>
+ 26c:	28 17       	cp	r18, r24
+ 26e:	39 07       	cpc	r19, r25
+ 270:	cc f3       	brlt	.-14     	; 0x264 <leftRotate+0x5a>
+
+	/************************************************************************/
+	/* car stopped here                                                                     */
+	/************************************************************************/
+	PORTB = PORTB & ~(1<<1);
+ 272:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<4);
+ 274:	c4 98       	cbi	0x18, 4	; 24
+	PORTB = PORTB & ~(1<<2);
+ 276:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<5);
+ 278:	c5 98       	cbi	0x18, 5	; 24
+	global_count = 0;
+ 27a:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 27e:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+
+}
+ 282:	2f 96       	adiw	r28, 0x0f	; 15
+ 284:	0f b6       	in	r0, 0x3f	; 63
+ 286:	f8 94       	cli
+ 288:	de bf       	out	0x3e, r29	; 62
+ 28a:	0f be       	out	0x3f, r0	; 63
+ 28c:	cd bf       	out	0x3d, r28	; 61
+ 28e:	df 91       	pop	r29
+ 290:	cf 91       	pop	r28
+ 292:	08 95       	ret
+
+00000294 <rightRotate>:
+
+
+void rightRotate()
+{
+ 294:	cf 93       	push	r28
+ 296:	df 93       	push	r29
+ 298:	cd b7       	in	r28, 0x3d	; 61
+ 29a:	de b7       	in	r29, 0x3e	; 62
+ 29c:	2f 97       	sbiw	r28, 0x0f	; 15
+ 29e:	0f b6       	in	r0, 0x3f	; 63
+ 2a0:	f8 94       	cli
+ 2a2:	de bf       	out	0x3e, r29	; 62
+ 2a4:	0f be       	out	0x3f, r0	; 63
+ 2a6:	cd bf       	out	0x3d, r28	; 61
+	left_global_count = 0;
+ 2a8:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 2ac:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+
+	char buffer[15];
+	UART_send_string("Input rotation degree as multiple of 18\n");
+ 2b0:	83 eb       	ldi	r24, 0xB3	; 179
+ 2b2:	90 e0       	ldi	r25, 0x00	; 0
+ 2b4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("For 36 degree input 002\n");
+ 2b8:	8c ed       	ldi	r24, 0xDC	; 220
+ 2ba:	90 e0       	ldi	r25, 0x00	; 0
+ 2bc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("For 90 degree input 005\n");
+ 2c0:	85 ef       	ldi	r24, 0xF5	; 245
+ 2c2:	90 e0       	ldi	r25, 0x00	; 0
+ 2c4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string("Your Input: ");
+ 2c8:	8e e0       	ldi	r24, 0x0E	; 14
+ 2ca:	91 e0       	ldi	r25, 0x01	; 1
+ 2cc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_receive_string(buffer,3);
+ 2d0:	63 e0       	ldi	r22, 0x03	; 3
+ 2d2:	70 e0       	ldi	r23, 0x00	; 0
+ 2d4:	ce 01       	movw	r24, r28
+ 2d6:	01 96       	adiw	r24, 0x01	; 1
+ 2d8:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+	buffer[3]='\0';
+ 2dc:	1c 82       	std	Y+4, r1	; 0x04
+
+	int rightTurnRequiredRotation=atoi(buffer);
+ 2de:	ce 01       	movw	r24, r28
+ 2e0:	01 96       	adiw	r24, 0x01	; 1
+ 2e2:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+	
+	/************************************************************************/
+	/* car starts to rotate                                                                     */
+	/************************************************************************/
+
+	PORTB = PORTB | (1<<4);
+ 2e6:	c4 9a       	sbi	0x18, 4	; 24
+	PORTB = PORTB | (1<<2);
+ 2e8:	c2 9a       	sbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<1);
+ 2ea:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<5);
+ 2ec:	c5 98       	cbi	0x18, 5	; 24
+
+
+	while(left_global_count<rightTurnRequiredRotation){}
+ 2ee:	20 91 f4 04 	lds	r18, 0x04F4	; 0x8004f4 <left_global_count>
+ 2f2:	30 91 f5 04 	lds	r19, 0x04F5	; 0x8004f5 <left_global_count+0x1>
+ 2f6:	28 17       	cp	r18, r24
+ 2f8:	39 07       	cpc	r19, r25
+ 2fa:	cc f3       	brlt	.-14     	; 0x2ee <rightRotate+0x5a>
+
+	/************************************************************************/
+	/* car stopped here                                                                     */
+	/************************************************************************/
+	PORTB = PORTB & ~(1<<1);
+ 2fc:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<4);
+ 2fe:	c4 98       	cbi	0x18, 4	; 24
+	PORTB = PORTB & ~(1<<2);
+ 300:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<5);
+ 302:	c5 98       	cbi	0x18, 5	; 24
+
+	left_global_count = 0;
+ 304:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 308:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+
+
+}
+ 30c:	2f 96       	adiw	r28, 0x0f	; 15
+ 30e:	0f b6       	in	r0, 0x3f	; 63
+ 310:	f8 94       	cli
+ 312:	de bf       	out	0x3e, r29	; 62
+ 314:	0f be       	out	0x3f, r0	; 63
+ 316:	cd bf       	out	0x3d, r28	; 61
+ 318:	df 91       	pop	r29
+ 31a:	cf 91       	pop	r28
+ 31c:	08 95       	ret
+
+0000031e <leftRotate90>:
+/************************************************************************/
+/* Function to rotate 90 degree to the left                                                                     */
+/************************************************************************/
+void leftRotate90()
+{
+	global_count = 0;  //resetting global count
+ 31e:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 322:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+
+	UART_send_string("\nRotating 90 degrees left\n");
+ 326:	8b e1       	ldi	r24, 0x1B	; 27
+ 328:	91 e0       	ldi	r25, 0x01	; 1
+ 32a:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 32e:	2f e3       	ldi	r18, 0x3F	; 63
+ 330:	8d e0       	ldi	r24, 0x0D	; 13
+ 332:	93 e0       	ldi	r25, 0x03	; 3
+ 334:	21 50       	subi	r18, 0x01	; 1
+ 336:	80 40       	sbci	r24, 0x00	; 0
+ 338:	90 40       	sbci	r25, 0x00	; 0
+ 33a:	e1 f7       	brne	.-8      	; 0x334 <leftRotate90+0x16>
+ 33c:	00 c0       	rjmp	.+0      	; 0x33e <leftRotate90+0x20>
+ 33e:	00 00       	nop
+
+	//int leftTurnRequiredRotation= 8;  //counts 8 magnet to rotate 90 degrees
+
+	int leftTurnRequiredRotation= 5;
+
+	total_left_rotate++;
+ 340:	80 91 f2 04 	lds	r24, 0x04F2	; 0x8004f2 <total_left_rotate>
+ 344:	90 91 f3 04 	lds	r25, 0x04F3	; 0x8004f3 <total_left_rotate+0x1>
+ 348:	01 96       	adiw	r24, 0x01	; 1
+ 34a:	90 93 f3 04 	sts	0x04F3, r25	; 0x8004f3 <total_left_rotate+0x1>
+ 34e:	80 93 f2 04 	sts	0x04F2, r24	; 0x8004f2 <total_left_rotate>
+ 352:	2f e3       	ldi	r18, 0x3F	; 63
+ 354:	8d e0       	ldi	r24, 0x0D	; 13
+ 356:	93 e0       	ldi	r25, 0x03	; 3
+ 358:	21 50       	subi	r18, 0x01	; 1
+ 35a:	80 40       	sbci	r24, 0x00	; 0
+ 35c:	90 40       	sbci	r25, 0x00	; 0
+ 35e:	e1 f7       	brne	.-8      	; 0x358 <leftRotate90+0x3a>
+ 360:	00 c0       	rjmp	.+0      	; 0x362 <leftRotate90+0x44>
+ 362:	00 00       	nop
+	
+	/************************************************************************/
+	/* car starts to left rotate 90 degrees                                                                 */
+	/************************************************************************/
+
+	PORTB = PORTB | (1<<1);
+ 364:	c1 9a       	sbi	0x18, 1	; 24
+	PORTB = PORTB | (1<<5);
+ 366:	c5 9a       	sbi	0x18, 5	; 24
+	PORTB = PORTB & ~(1<<2);
+ 368:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<4);
+ 36a:	c4 98       	cbi	0x18, 4	; 24
+
+
+	while(global_count<leftTurnRequiredRotation){}
+ 36c:	80 91 f6 04 	lds	r24, 0x04F6	; 0x8004f6 <global_count>
+ 370:	90 91 f7 04 	lds	r25, 0x04F7	; 0x8004f7 <global_count+0x1>
+ 374:	05 97       	sbiw	r24, 0x05	; 5
+ 376:	d4 f3       	brlt	.-12     	; 0x36c <leftRotate90+0x4e>
+
+	/************************************************************************/
+	/* car stopped here                                                                     */
+	/************************************************************************/
+	PORTB = PORTB & ~(1<<1);
+ 378:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<4);
+ 37a:	c4 98       	cbi	0x18, 4	; 24
+	PORTB = PORTB & ~(1<<2);
+ 37c:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<5);
+ 37e:	c5 98       	cbi	0x18, 5	; 24
+
+	global_count = 0;
+ 380:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 384:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+ 388:	2f e3       	ldi	r18, 0x3F	; 63
+ 38a:	8d e0       	ldi	r24, 0x0D	; 13
+ 38c:	93 e0       	ldi	r25, 0x03	; 3
+ 38e:	21 50       	subi	r18, 0x01	; 1
+ 390:	80 40       	sbci	r24, 0x00	; 0
+ 392:	90 40       	sbci	r25, 0x00	; 0
+ 394:	e1 f7       	brne	.-8      	; 0x38e <leftRotate90+0x70>
+ 396:	00 c0       	rjmp	.+0      	; 0x398 <leftRotate90+0x7a>
+ 398:	00 00       	nop
+ 39a:	08 95       	ret
+
+0000039c <rightRotate90>:
+/************************************************************************/
+/* Function to rotate 90 to the right                                                                     */
+/************************************************************************/
+void rightRotate90()
+{
+	left_global_count = 0;   //resetting global count
+ 39c:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 3a0:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+
+	UART_send_string("\nRotating 90 degrees right\n");
+ 3a4:	86 e3       	ldi	r24, 0x36	; 54
+ 3a6:	91 e0       	ldi	r25, 0x01	; 1
+ 3a8:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+ 3ac:	2f e3       	ldi	r18, 0x3F	; 63
+ 3ae:	8d e0       	ldi	r24, 0x0D	; 13
+ 3b0:	93 e0       	ldi	r25, 0x03	; 3
+ 3b2:	21 50       	subi	r18, 0x01	; 1
+ 3b4:	80 40       	sbci	r24, 0x00	; 0
+ 3b6:	90 40       	sbci	r25, 0x00	; 0
+ 3b8:	e1 f7       	brne	.-8      	; 0x3b2 <rightRotate90+0x16>
+ 3ba:	00 c0       	rjmp	.+0      	; 0x3bc <rightRotate90+0x20>
+ 3bc:	00 00       	nop
+	_delay_ms(1000);
+	int rightTurnRequiredRotation = 5;   //counts 8 magnet to rotate 90 degrees
+
+	total_right_rotate++;
+ 3be:	80 91 f0 04 	lds	r24, 0x04F0	; 0x8004f0 <__data_end>
+ 3c2:	90 91 f1 04 	lds	r25, 0x04F1	; 0x8004f1 <__data_end+0x1>
+ 3c6:	01 96       	adiw	r24, 0x01	; 1
+ 3c8:	90 93 f1 04 	sts	0x04F1, r25	; 0x8004f1 <__data_end+0x1>
+ 3cc:	80 93 f0 04 	sts	0x04F0, r24	; 0x8004f0 <__data_end>
+ 3d0:	2f e3       	ldi	r18, 0x3F	; 63
+ 3d2:	8d e0       	ldi	r24, 0x0D	; 13
+ 3d4:	93 e0       	ldi	r25, 0x03	; 3
+ 3d6:	21 50       	subi	r18, 0x01	; 1
+ 3d8:	80 40       	sbci	r24, 0x00	; 0
+ 3da:	90 40       	sbci	r25, 0x00	; 0
+ 3dc:	e1 f7       	brne	.-8      	; 0x3d6 <rightRotate90+0x3a>
+ 3de:	00 c0       	rjmp	.+0      	; 0x3e0 <rightRotate90+0x44>
+ 3e0:	00 00       	nop
+
+	/************************************************************************/
+	/* car starts to right rotate 90 degrees                                                                     */
+	/************************************************************************/
+	
+	PORTB = PORTB | (1<<4);
+ 3e2:	c4 9a       	sbi	0x18, 4	; 24
+	PORTB = PORTB | (1<<2);
+ 3e4:	c2 9a       	sbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<1);
+ 3e6:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<5);
+ 3e8:	c5 98       	cbi	0x18, 5	; 24
+
+
+	while(left_global_count<rightTurnRequiredRotation){}
+ 3ea:	80 91 f4 04 	lds	r24, 0x04F4	; 0x8004f4 <left_global_count>
+ 3ee:	90 91 f5 04 	lds	r25, 0x04F5	; 0x8004f5 <left_global_count+0x1>
+ 3f2:	05 97       	sbiw	r24, 0x05	; 5
+ 3f4:	d4 f3       	brlt	.-12     	; 0x3ea <rightRotate90+0x4e>
+
+	/************************************************************************/
+	/* car stopped here                                                                     */
+	/************************************************************************/
+	PORTB = PORTB & ~(1<<1);
+ 3f6:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<4);
+ 3f8:	c4 98       	cbi	0x18, 4	; 24
+	PORTB = PORTB & ~(1<<2);
+ 3fa:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<5);
+ 3fc:	c5 98       	cbi	0x18, 5	; 24
+
+	left_global_count = 0;
+ 3fe:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 402:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+ 406:	2f e3       	ldi	r18, 0x3F	; 63
+ 408:	8d e0       	ldi	r24, 0x0D	; 13
+ 40a:	93 e0       	ldi	r25, 0x03	; 3
+ 40c:	21 50       	subi	r18, 0x01	; 1
+ 40e:	80 40       	sbci	r24, 0x00	; 0
+ 410:	90 40       	sbci	r25, 0x00	; 0
+ 412:	e1 f7       	brne	.-8      	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+ 414:	00 c0       	rjmp	.+0      	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+ 416:	00 00       	nop
+ 418:	08 95       	ret
+
+0000041a <checkObstacle>:
+void checkObstacle()
+{
+
+
+	int obstacle = PINA & 0x01; // we take sonar value from pin0 of portA
+	if(obstacle==1)
+ 41a:	c8 9b       	sbis	0x19, 0	; 25
+ 41c:	0c c0       	rjmp	.+24     	; 0x436 <checkObstacle+0x1c>
+	{
+		UART_send_string("clear the obstacle in-front\n");
+ 41e:	82 e5       	ldi	r24, 0x52	; 82
+ 420:	91 e0       	ldi	r25, 0x01	; 1
+ 422:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		unsigned char state;
+		state = PINB;			//saving the current state of PORTB
+ 426:	86 b3       	in	r24, 0x16	; 22
+
+		PORTB = PORTB & ~(1<<1);
+ 428:	c1 98       	cbi	0x18, 1	; 24
+		PORTB = PORTB & ~(1<<4);
+ 42a:	c4 98       	cbi	0x18, 4	; 24
+		PORTB = PORTB & ~(1<<2);
+ 42c:	c2 98       	cbi	0x18, 2	; 24
+		PORTB = PORTB & ~(1<<5);
+ 42e:	c5 98       	cbi	0x18, 5	; 24
+
+		while(obstacle==1)
+ 430:	c8 99       	sbic	0x19, 0	; 25
+ 432:	fe cf       	rjmp	.-4      	; 0x430 <checkObstacle+0x16>
+		{
+			obstacle = PINA & 0x01; // we take sonar value from pin0 of portA
+		}
+
+		PORTB = state;			//Returning to the Previous state of PORTB
+ 434:	88 bb       	out	0x18, r24	; 24
+ 436:	08 95       	ret
+
+00000438 <moveAhead>:
+
+/************************************************************************/
+/* This function moves the car ahead in a certain axis along the x or y axis                                                                     */
+/************************************************************************/
+void moveAhead(int unit)
+{
+ 438:	ef 92       	push	r14
+ 43a:	ff 92       	push	r15
+ 43c:	0f 93       	push	r16
+ 43e:	1f 93       	push	r17
+ 440:	cf 93       	push	r28
+ 442:	df 93       	push	r29
+ 444:	cd b7       	in	r28, 0x3d	; 61
+ 446:	de b7       	in	r29, 0x3e	; 62
+ 448:	2a 97       	sbiw	r28, 0x0a	; 10
+ 44a:	0f b6       	in	r0, 0x3f	; 63
+ 44c:	f8 94       	cli
+ 44e:	de bf       	out	0x3e, r29	; 62
+ 450:	0f be       	out	0x3f, r0	; 63
+ 452:	cd bf       	out	0x3d, r28	; 61
+ 454:	7c 01       	movw	r14, r24
+	global_count = 0;
+ 456:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 45a:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+	left_global_count = 0;
+ 45e:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 462:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+ 466:	4a e0       	ldi	r20, 0x0A	; 10
+ 468:	be 01       	movw	r22, r28
+ 46a:	6f 5f       	subi	r22, 0xFF	; 255
+ 46c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 46e:	0e 94 a0 04 	call	0x940	; 0x940 <__itoa_ncheck>
+
+	int requiredRotation = 0;
+	char buffer[10];
+	itoa(unit,buffer,10);
+	UART_send_string("\nMoving ");
+ 472:	8f e6       	ldi	r24, 0x6F	; 111
+ 474:	91 e0       	ldi	r25, 0x01	; 1
+ 476:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string(buffer);
+ 47a:	ce 01       	movw	r24, r28
+ 47c:	01 96       	adiw	r24, 0x01	; 1
+ 47e:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+	UART_send_string(" feet ahead\n");
+ 482:	88 e7       	ldi	r24, 0x78	; 120
+ 484:	91 e0       	ldi	r25, 0x01	; 1
+ 486:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+	/************************************************************************/
+	/* Converting the unit to rotation                                                                     */
+	/************************************************************************/
+
+	requiredRotation = unit*7;   //1 foot requires 7 rotation
+ 48a:	87 01       	movw	r16, r14
+ 48c:	00 0f       	add	r16, r16
+ 48e:	11 1f       	adc	r17, r17
+ 490:	00 0f       	add	r16, r16
+ 492:	11 1f       	adc	r17, r17
+ 494:	00 0f       	add	r16, r16
+ 496:	11 1f       	adc	r17, r17
+ 498:	0e 19       	sub	r16, r14
+ 49a:	1f 09       	sbc	r17, r15
+
+
+	/************************************************************************/
+	/* moving ahead                                                                     */
+	/************************************************************************/
+	PORTB = PORTB | (1<<1);
+ 49c:	c1 9a       	sbi	0x18, 1	; 24
+	PORTB = PORTB | (1<<4);
+ 49e:	c4 9a       	sbi	0x18, 4	; 24
+	PORTB = PORTB & ~(1<<2);
+ 4a0:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<5);
+ 4a2:	c5 98       	cbi	0x18, 5	; 24
+
+
+	while(global_count<requiredRotation){checkObstacle();}
+ 4a4:	80 91 f6 04 	lds	r24, 0x04F6	; 0x8004f6 <global_count>
+ 4a8:	90 91 f7 04 	lds	r25, 0x04F7	; 0x8004f7 <global_count+0x1>
+ 4ac:	80 17       	cp	r24, r16
+ 4ae:	91 07       	cpc	r25, r17
+ 4b0:	4c f4       	brge	.+18     	; 0x4c4 <moveAhead+0x8c>
+ 4b2:	0e 94 0d 02 	call	0x41a	; 0x41a <checkObstacle>
+ 4b6:	80 91 f6 04 	lds	r24, 0x04F6	; 0x8004f6 <global_count>
+ 4ba:	90 91 f7 04 	lds	r25, 0x04F7	; 0x8004f7 <global_count+0x1>
+ 4be:	80 17       	cp	r24, r16
+ 4c0:	91 07       	cpc	r25, r17
+ 4c2:	bc f3       	brlt	.-18     	; 0x4b2 <moveAhead+0x7a>
+
+	/************************************************************************/
+	/* stopped here                                                                     */
+	/************************************************************************/
+	PORTB = PORTB & ~(1<<1);
+ 4c4:	c1 98       	cbi	0x18, 1	; 24
+	PORTB = PORTB & ~(1<<4);
+ 4c6:	c4 98       	cbi	0x18, 4	; 24
+	PORTB = PORTB & ~(1<<2);
+ 4c8:	c2 98       	cbi	0x18, 2	; 24
+	PORTB = PORTB & ~(1<<5);
+ 4ca:	c5 98       	cbi	0x18, 5	; 24
+	
+	/************************************************************************/
+	/* resetting the values of global count                                                                     */
+	/************************************************************************/
+	global_count = 0;
+ 4cc:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 4d0:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+	left_global_count = 0;
+ 4d4:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 4d8:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+
+
+}
+ 4dc:	2a 96       	adiw	r28, 0x0a	; 10
+ 4de:	0f b6       	in	r0, 0x3f	; 63
+ 4e0:	f8 94       	cli
+ 4e2:	de bf       	out	0x3e, r29	; 62
+ 4e4:	0f be       	out	0x3f, r0	; 63
+ 4e6:	cd bf       	out	0x3d, r28	; 61
+ 4e8:	df 91       	pop	r29
+ 4ea:	cf 91       	pop	r28
+ 4ec:	1f 91       	pop	r17
+ 4ee:	0f 91       	pop	r16
+ 4f0:	ff 90       	pop	r15
+ 4f2:	ef 90       	pop	r14
+ 4f4:	08 95       	ret
+
+000004f6 <main>:
+
+
+int main()
+{
+ 4f6:	cf 93       	push	r28
+ 4f8:	df 93       	push	r29
+ 4fa:	cd b7       	in	r28, 0x3d	; 61
+ 4fc:	de b7       	in	r29, 0x3e	; 62
+ 4fe:	68 97       	sbiw	r28, 0x18	; 24
+ 500:	0f b6       	in	r0, 0x3f	; 63
+ 502:	f8 94       	cli
+ 504:	de bf       	out	0x3e, r29	; 62
+ 506:	0f be       	out	0x3f, r0	; 63
+ 508:	cd bf       	out	0x3d, r28	; 61
+
+	/************************************************************************/
+	/* Initializing the blue tooth library for serial communication                                                                     */
+	/************************************************************************/
+	UART_init(); 
+ 50a:	0e 94 49 00 	call	0x92	; 0x92 <UART_init>
+
+
+	DDRA = 0x00;			// Setting up a pin of A0 for receiving signal from sonar
+ 50e:	1a ba       	out	0x1a, r1	; 26
+	/* motor control starts from here                                                                     */
+	/************************************************************************/
+	int left_speed = 82;   // initialze l_s
+	int right_speed = 85; // initialze r_s
+	int top_speed = 100; // initialze full speed library works using 100 actually
+	init_pwm0_phase_mode_non_inverted();
+ 510:	0e 94 7d 00 	call	0xfa	; 0xfa <init_pwm0_phase_mode_non_inverted>
+void set_duty0_inverted(unsigned char c){
+    OCR0 = 255*(1 - c/100);
+}
+
+void set_duty0_non_inverted(unsigned char c){
+    OCR0 = (255*c/100);
+ 514:	81 ed       	ldi	r24, 0xD1	; 209
+ 516:	8c bf       	out	0x3c, r24	; 60
+	set_duty0_non_inverted(left_speed); //setting the left speed
+	init_pwm2_phase_mode_non_inverted();
+ 518:	0e 94 81 00 	call	0x102	; 0x102 <init_pwm2_phase_mode_non_inverted>
+    TCCR2 = (1 << WGM20) | (1 << COM21) | (1 << COM20) | (1 << CS20) | (1 << CS22);
+    DDRD |= (1 << PD7); // OC2 PIN as output   
+}
+
+void set_duty2_non_inverted(unsigned char c){
+    OCR2 = (255*c/100);
+ 51c:	88 ed       	ldi	r24, 0xD8	; 216
+ 51e:	83 bd       	out	0x23, r24	; 35
+	set_duty2_non_inverted(right_speed);//setting the right speed
+
+	DDRB = DDRB | 0x00110110;// bits are set to helps to drive motor
+ 520:	bc 9a       	sbi	0x17, 4	; 23
+
+
+	/************************************************************************/
+	/* interrupt initialization and enabling for Hall effect sensor                                                                     */
+	/************************************************************************/
+	GICR = (1<<INT1) |(1<<INT0);
+ 522:	80 ec       	ldi	r24, 0xC0	; 192
+ 524:	8b bf       	out	0x3b, r24	; 59
+	MCUCR = 0b00001111;  //both interrupt are set to rising edges of the clock
+ 526:	8f e0       	ldi	r24, 0x0F	; 15
+ 528:	85 bf       	out	0x35, r24	; 53
+
+	sei();
+ 52a:	78 94       	sei
+ 52c:	2f e3       	ldi	r18, 0x3F	; 63
+ 52e:	8d e0       	ldi	r24, 0x0D	; 13
+ 530:	93 e0       	ldi	r25, 0x03	; 3
+ 532:	21 50       	subi	r18, 0x01	; 1
+ 534:	80 40       	sbci	r24, 0x00	; 0
+ 536:	90 40       	sbci	r25, 0x00	; 0
+ 538:	e1 f7       	brne	.-8      	; 0x532 <main+0x3c>
+ 53a:	00 c0       	rjmp	.+0      	; 0x53c <main+0x46>
+ 53c:	00 00       	nop
+
+	/************************************************************************/
+	/* motor control starts from here                                                                     */
+	/************************************************************************/
+	int left_speed = 82;   // initialze l_s
+	int right_speed = 85; // initialze r_s
+ 53e:	0f 2e       	mov	r0, r31
+ 540:	f5 e5       	ldi	r31, 0x55	; 85
+ 542:	cf 2e       	mov	r12, r31
+ 544:	f0 2d       	mov	r31, r0
+ 546:	91 2c       	mov	r9, r1
+
+
+	/************************************************************************/
+	/* motor control starts from here                                                                     */
+	/************************************************************************/
+	int left_speed = 82;   // initialze l_s
+ 548:	0f 2e       	mov	r0, r31
+ 54a:	f2 e5       	ldi	r31, 0x52	; 82
+ 54c:	df 2e       	mov	r13, r31
+ 54e:	f0 2d       	mov	r31, r0
+ 550:	a1 2c       	mov	r10, r1
+ 552:	bb 24       	eor	r11, r11
+ 554:	ba 94       	dec	r11
+ 556:	0f 2e       	mov	r0, r31
+ 558:	f4 e6       	ldi	r31, 0x64	; 100
+ 55a:	6f 2e       	mov	r6, r31
+ 55c:	71 2c       	mov	r7, r1
+ 55e:	f0 2d       	mov	r31, r0
+	while(1)
+	{
+		/************************************************************************/
+		/* prompt to display on the console itself                                                                     */
+		/************************************************************************/
+		checkObstacle();
+ 560:	0e 94 0d 02 	call	0x41a	; 0x41a <checkObstacle>
+		UART_send_string("\n\nWelcome to prompt\n");
+ 564:	85 e8       	ldi	r24, 0x85	; 133
+ 566:	91 e0       	ldi	r25, 0x01	; 1
+ 568:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter t to change left wheel speed\n");
+ 56c:	8a e9       	ldi	r24, 0x9A	; 154
+ 56e:	91 e0       	ldi	r25, 0x01	; 1
+ 570:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter y to change right wheel speed\n");
+ 574:	8e eb       	ldi	r24, 0xBE	; 190
+ 576:	91 e0       	ldi	r25, 0x01	; 1
+ 578:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter o to view wheel speeds\n");
+ 57c:	83 ee       	ldi	r24, 0xE3	; 227
+ 57e:	91 e0       	ldi	r25, 0x01	; 1
+ 580:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter r for rotate the car\n");
+ 584:	81 e0       	ldi	r24, 0x01	; 1
+ 586:	92 e0       	ldi	r25, 0x02	; 2
+ 588:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter w to move the car forward\n");
+ 58c:	8d e1       	ldi	r24, 0x1D	; 29
+ 58e:	92 e0       	ldi	r25, 0x02	; 2
+ 590:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter s to move the car backward\n");
+ 594:	8e e3       	ldi	r24, 0x3E	; 62
+ 596:	92 e0       	ldi	r25, 0x02	; 2
+ 598:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter x to stop the car\n");
+ 59c:	80 e6       	ldi	r24, 0x60	; 96
+ 59e:	92 e0       	ldi	r25, 0x02	; 2
+ 5a0:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter m to move the car forward for specific unit\n");
+ 5a4:	89 e7       	ldi	r24, 0x79	; 121
+ 5a6:	92 e0       	ldi	r25, 0x02	; 2
+ 5a8:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Enter j to start the delivery operation\n");
+ 5ac:	8c ea       	ldi	r24, 0xAC	; 172
+ 5ae:	92 e0       	ldi	r25, 0x02	; 2
+ 5b0:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+		UART_send_string("Your input: ");
+ 5b4:	85 ed       	ldi	r24, 0xD5	; 213
+ 5b6:	92 e0       	ldi	r25, 0x02	; 2
+ 5b8:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+		/************************************************************************/
+		/* receving menu choice                                                                     */
+		/************************************************************************/
+		UART_receive_string(buffer,1);
+ 5bc:	61 e0       	ldi	r22, 0x01	; 1
+ 5be:	70 e0       	ldi	r23, 0x00	; 0
+ 5c0:	ce 01       	movw	r24, r28
+ 5c2:	01 96       	adiw	r24, 0x01	; 1
+ 5c4:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+		buffer[1]='\0';
+ 5c8:	1a 82       	std	Y+2, r1	; 0x02
+
+		a = buffer[0];
+ 5ca:	89 81       	ldd	r24, Y+1	; 0x01
+ 5cc:	80 93 fd 04 	sts	0x04FD, r24	; 0x8004fd <a>
+		UART_send(a);
+ 5d0:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 5d4:	0e 94 53 00 	call	0xa6	; 0xa6 <UART_send>
+		UART_send_string("\n");
+ 5d8:	83 ef       	ldi	r24, 0xF3	; 243
+ 5da:	90 e0       	ldi	r25, 0x00	; 0
+ 5dc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+
+				if(a=='w')// for w
+ 5e0:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 5e4:	87 37       	cpi	r24, 0x77	; 119
+ 5e6:	61 f4       	brne	.+24     	; 0x600 <main+0x10a>
+				{
+					UART_send_string("In w\n");
+ 5e8:	82 ee       	ldi	r24, 0xE2	; 226
+ 5ea:	92 e0       	ldi	r25, 0x02	; 2
+ 5ec:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_send_string("the car will move forward\n");
+ 5f0:	88 ee       	ldi	r24, 0xE8	; 232
+ 5f2:	92 e0       	ldi	r25, 0x02	; 2
+ 5f4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+					PORTB = PORTB | (1<<1);
+ 5f8:	c1 9a       	sbi	0x18, 1	; 24
+					PORTB = PORTB | (1<<4);
+ 5fa:	c4 9a       	sbi	0x18, 4	; 24
+					PORTB = PORTB & ~(1<<2);
+ 5fc:	c2 98       	cbi	0x18, 2	; 24
+					PORTB = PORTB & ~(1<<5);
+ 5fe:	c5 98       	cbi	0x18, 5	; 24
+				}
+				if(a =='s')// for s
+ 600:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 604:	83 37       	cpi	r24, 0x73	; 115
+ 606:	41 f4       	brne	.+16     	; 0x618 <main+0x122>
+				{
+
+					UART_send_string("inside S so the car will move backward");
+ 608:	83 e0       	ldi	r24, 0x03	; 3
+ 60a:	93 e0       	ldi	r25, 0x03	; 3
+ 60c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+					PORTB = PORTB | (1<<2);
+ 610:	c2 9a       	sbi	0x18, 2	; 24
+					PORTB = PORTB | (1<<5);
+ 612:	c5 9a       	sbi	0x18, 5	; 24
+					PORTB = PORTB & ~(1<<1);
+ 614:	c1 98       	cbi	0x18, 1	; 24
+					PORTB = PORTB & ~(1<<4);
+ 616:	c4 98       	cbi	0x18, 4	; 24
+
+				}
+				if(a =='x')// for x
+ 618:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 61c:	88 37       	cpi	r24, 0x78	; 120
+ 61e:	81 f4       	brne	.+32     	; 0x640 <main+0x14a>
+				{
+					UART_send_string("inside X so the car will stop");
+ 620:	8a e2       	ldi	r24, 0x2A	; 42
+ 622:	93 e0       	ldi	r25, 0x03	; 3
+ 624:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+					PORTB = PORTB & ~(1<<1);
+ 628:	c1 98       	cbi	0x18, 1	; 24
+					PORTB = PORTB & ~(1<<4);
+ 62a:	c4 98       	cbi	0x18, 4	; 24
+					PORTB = PORTB & ~(1<<2);
+ 62c:	c2 98       	cbi	0x18, 2	; 24
+					PORTB = PORTB & ~(1<<5);
+ 62e:	c5 98       	cbi	0x18, 5	; 24
+
+					global_count = 0;
+ 630:	10 92 f7 04 	sts	0x04F7, r1	; 0x8004f7 <global_count+0x1>
+ 634:	10 92 f6 04 	sts	0x04F6, r1	; 0x8004f6 <global_count>
+					left_global_count = 0;
+ 638:	10 92 f5 04 	sts	0x04F5, r1	; 0x8004f5 <left_global_count+0x1>
+ 63c:	10 92 f4 04 	sts	0x04F4, r1	; 0x8004f4 <left_global_count>
+
+				}
+
+				if(a =='a') // for 90 degrees left rotation
+ 640:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 644:	81 36       	cpi	r24, 0x61	; 97
+ 646:	31 f4       	brne	.+12     	; 0x654 <main+0x15e>
+				{
+
+					UART_send_string("The car will now turn left\n");
+ 648:	88 e4       	ldi	r24, 0x48	; 72
+ 64a:	93 e0       	ldi	r25, 0x03	; 3
+ 64c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					leftRotate90();
+ 650:	0e 94 8f 01 	call	0x31e	; 0x31e <leftRotate90>
+
+				}
+
+				if(a =='d')//for 90 degrees right rotation
+ 654:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 658:	84 36       	cpi	r24, 0x64	; 100
+ 65a:	31 f4       	brne	.+12     	; 0x668 <main+0x172>
+				{
+					UART_send_string("The car will now turn right\n");
+ 65c:	84 e6       	ldi	r24, 0x64	; 100
+ 65e:	93 e0       	ldi	r25, 0x03	; 3
+ 660:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					rightRotate90();
+ 664:	0e 94 ce 01 	call	0x39c	; 0x39c <rightRotate90>
+				}
+
+				if(a =='t')//changing the left wheel speed
+ 668:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 66c:	84 37       	cpi	r24, 0x74	; 116
+ 66e:	c1 f4       	brne	.+48     	; 0x6a0 <main+0x1aa>
+				{
+					UART_send_string("\nGive the speed of left wheel:");
+ 670:	81 e8       	ldi	r24, 0x81	; 129
+ 672:	93 e0       	ldi	r25, 0x03	; 3
+ 674:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_receive_string(buffer,3);
+ 678:	63 e0       	ldi	r22, 0x03	; 3
+ 67a:	70 e0       	ldi	r23, 0x00	; 0
+ 67c:	ce 01       	movw	r24, r28
+ 67e:	01 96       	adiw	r24, 0x01	; 1
+ 680:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+					buffer[3]='\0';
+ 684:	1c 82       	std	Y+4, r1	; 0x04
+					left_speed = atoi(buffer);
+ 686:	ce 01       	movw	r24, r28
+ 688:	01 96       	adiw	r24, 0x01	; 1
+ 68a:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+ 68e:	d8 2e       	mov	r13, r24
+ 690:	a9 2e       	mov	r10, r25
+ 692:	8b 9d       	mul	r24, r11
+ 694:	c0 01       	movw	r24, r0
+ 696:	11 24       	eor	r1, r1
+ 698:	b3 01       	movw	r22, r6
+ 69a:	0e 94 5a 04 	call	0x8b4	; 0x8b4 <__divmodhi4>
+ 69e:	63 bd       	out	0x23, r22	; 35
+
+					set_duty2_non_inverted(left_speed);
+
+				}
+				if(a =='y')//changing the right wheel speed
+ 6a0:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 6a4:	89 37       	cpi	r24, 0x79	; 121
+ 6a6:	c1 f4       	brne	.+48     	; 0x6d8 <main+0x1e2>
+				{
+					UART_send_string("Give the speed of right wheel:");
+ 6a8:	80 ea       	ldi	r24, 0xA0	; 160
+ 6aa:	93 e0       	ldi	r25, 0x03	; 3
+ 6ac:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_receive_string(buffer,3);
+ 6b0:	63 e0       	ldi	r22, 0x03	; 3
+ 6b2:	70 e0       	ldi	r23, 0x00	; 0
+ 6b4:	ce 01       	movw	r24, r28
+ 6b6:	01 96       	adiw	r24, 0x01	; 1
+ 6b8:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+					buffer[3]='\0';
+ 6bc:	1c 82       	std	Y+4, r1	; 0x04
+					right_speed = atoi(buffer);
+ 6be:	ce 01       	movw	r24, r28
+ 6c0:	01 96       	adiw	r24, 0x01	; 1
+ 6c2:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+ 6c6:	c8 2e       	mov	r12, r24
+ 6c8:	99 2e       	mov	r9, r25
+void set_duty0_inverted(unsigned char c){
+    OCR0 = 255*(1 - c/100);
+}
+
+void set_duty0_non_inverted(unsigned char c){
+    OCR0 = (255*c/100);
+ 6ca:	8b 9d       	mul	r24, r11
+ 6cc:	c0 01       	movw	r24, r0
+ 6ce:	11 24       	eor	r1, r1
+ 6d0:	b3 01       	movw	r22, r6
+ 6d2:	0e 94 5a 04 	call	0x8b4	; 0x8b4 <__divmodhi4>
+ 6d6:	6c bf       	out	0x3c, r22	; 60
+
+					set_duty0_non_inverted(right_speed);
+
+				}
+				if(a =='o')//shows speed
+ 6d8:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 6dc:	8f 36       	cpi	r24, 0x6F	; 111
+ 6de:	41 f5       	brne	.+80     	; 0x730 <main+0x23a>
+				{
+					UART_send_string("In O showing speed\n");
+ 6e0:	8f eb       	ldi	r24, 0xBF	; 191
+ 6e2:	93 e0       	ldi	r25, 0x03	; 3
+ 6e4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+ 6e8:	4a e0       	ldi	r20, 0x0A	; 10
+ 6ea:	be 01       	movw	r22, r28
+ 6ec:	6f 5f       	subi	r22, 0xFF	; 255
+ 6ee:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6f0:	8d 2d       	mov	r24, r13
+ 6f2:	9a 2d       	mov	r25, r10
+ 6f4:	0e 94 a0 04 	call	0x940	; 0x940 <__itoa_ncheck>
+
+					//speed code
+					x = left_speed;
+					itoa(x,buffer,10);
+
+					UART_send_string("left:");
+ 6f8:	83 ed       	ldi	r24, 0xD3	; 211
+ 6fa:	93 e0       	ldi	r25, 0x03	; 3
+ 6fc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_send_string(buffer);
+ 700:	ce 01       	movw	r24, r28
+ 702:	01 96       	adiw	r24, 0x01	; 1
+ 704:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+ 708:	4a e0       	ldi	r20, 0x0A	; 10
+ 70a:	be 01       	movw	r22, r28
+ 70c:	6f 5f       	subi	r22, 0xFF	; 255
+ 70e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 710:	8c 2d       	mov	r24, r12
+ 712:	99 2d       	mov	r25, r9
+ 714:	0e 94 a0 04 	call	0x940	; 0x940 <__itoa_ncheck>
+
+
+					x = right_speed;
+					itoa(x,buffer,10);
+
+					UART_send_string(" right:");
+ 718:	89 ed       	ldi	r24, 0xD9	; 217
+ 71a:	93 e0       	ldi	r25, 0x03	; 3
+ 71c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_send_string(buffer);
+ 720:	ce 01       	movw	r24, r28
+ 722:	01 96       	adiw	r24, 0x01	; 1
+ 724:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_send_string("\n");
+ 728:	83 ef       	ldi	r24, 0xF3	; 243
+ 72a:	90 e0       	ldi	r25, 0x00	; 0
+ 72c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					//speed code
+				}
+
+				if(a=='r') //rotating left or right by 90 degrees with this option
+ 730:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 734:	82 37       	cpi	r24, 0x72	; 114
+ 736:	b9 f4       	brne	.+46     	; 0x766 <main+0x270>
+				{
+					while(1)
+					{
+						UART_send_string("\nEnter l to rotate left and r to rotate right or e to exit\n");
+ 738:	81 ee       	ldi	r24, 0xE1	; 225
+ 73a:	93 e0       	ldi	r25, 0x03	; 3
+ 73c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_receive_string(buffer,1);
+ 740:	61 e0       	ldi	r22, 0x01	; 1
+ 742:	70 e0       	ldi	r23, 0x00	; 0
+ 744:	ce 01       	movw	r24, r28
+ 746:	01 96       	adiw	r24, 0x01	; 1
+ 748:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+						if(buffer[0]=='l')
+ 74c:	89 81       	ldd	r24, Y+1	; 0x01
+ 74e:	8c 36       	cpi	r24, 0x6C	; 108
+ 750:	19 f4       	brne	.+6      	; 0x758 <main+0x262>
+						{
+							leftRotate();
+ 752:	0e 94 05 01 	call	0x20a	; 0x20a <leftRotate>
+ 756:	f0 cf       	rjmp	.-32     	; 0x738 <main+0x242>
+						}
+						else if(buffer[0] == 'r')
+ 758:	82 37       	cpi	r24, 0x72	; 114
+ 75a:	19 f4       	brne	.+6      	; 0x762 <main+0x26c>
+						{
+							rightRotate();
+ 75c:	0e 94 4a 01 	call	0x294	; 0x294 <rightRotate>
+ 760:	eb cf       	rjmp	.-42     	; 0x738 <main+0x242>
+						}
+						else if(buffer[0] =='e')
+ 762:	85 36       	cpi	r24, 0x65	; 101
+ 764:	49 f7       	brne	.-46     	; 0x738 <main+0x242>
+							break;
+						}
+					}
+				}
+
+				if (a == 'j') //this mode is for the delivery operation mode
+ 766:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 76a:	8a 36       	cpi	r24, 0x6A	; 106
+ 76c:	09 f0       	breq	.+2      	; 0x770 <main+0x27a>
+ 76e:	84 c0       	rjmp	.+264    	; 0x878 <__stack+0x19>
+				{
+					//char buffer[10];
+					UART_send_string("\nWelcome to the operation mode\n");
+ 770:	8d e1       	ldi	r24, 0x1D	; 29
+ 772:	94 e0       	ldi	r25, 0x04	; 4
+ 774:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+					while(1)
+					{
+						UART_send_string("Give your coordinate in x, y format( ex. 002,003) in feet\n");
+ 778:	8d e3       	ldi	r24, 0x3D	; 61
+ 77a:	94 e0       	ldi	r25, 0x04	; 4
+ 77c:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_receive_string(buffer,7);
+ 780:	67 e0       	ldi	r22, 0x07	; 7
+ 782:	70 e0       	ldi	r23, 0x00	; 0
+ 784:	ce 01       	movw	r24, r28
+ 786:	01 96       	adiw	r24, 0x01	; 1
+ 788:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+						UART_send_string("GAY BUFFER = ");
+ 78c:	88 e7       	ldi	r24, 0x78	; 120
+ 78e:	94 e0       	ldi	r25, 0x04	; 4
+ 790:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_send_string(buffer);
+ 794:	ce 01       	movw	r24, r28
+ 796:	01 96       	adiw	r24, 0x01	; 1
+ 798:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_send_string("\n");
+ 79c:	83 ef       	ldi	r24, 0xF3	; 243
+ 79e:	90 e0       	ldi	r25, 0x00	; 0
+ 7a0:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+
+						/************************************************************************/
+						/* processing the input string to get x,y coordinates in feet                                                                     */
+						/************************************************************************/
+
+						xCoord[0] = buffer[0];
+ 7a4:	89 81       	ldd	r24, Y+1	; 0x01
+ 7a6:	8d 8b       	std	Y+21, r24	; 0x15
+						xCoord[1] = buffer[1];
+ 7a8:	8a 81       	ldd	r24, Y+2	; 0x02
+ 7aa:	8e 8b       	std	Y+22, r24	; 0x16
+						xCoord[2] = buffer[2];
+ 7ac:	8b 81       	ldd	r24, Y+3	; 0x03
+ 7ae:	8f 8b       	std	Y+23, r24	; 0x17
+
+						yCoord[0] = buffer[4];
+ 7b0:	8d 81       	ldd	r24, Y+5	; 0x05
+ 7b2:	89 8b       	std	Y+17, r24	; 0x11
+						yCoord[1] = buffer[5];
+ 7b4:	8e 81       	ldd	r24, Y+6	; 0x06
+ 7b6:	8a 8b       	std	Y+18, r24	; 0x12
+						yCoord[2] = buffer[6];
+ 7b8:	8f 81       	ldd	r24, Y+7	; 0x07
+ 7ba:	8b 8b       	std	Y+19, r24	; 0x13
+
+						xCoord[3] = '\0';
+ 7bc:	18 8e       	std	Y+24, r1	; 0x18
+						yCoord[3] = '\0';
+ 7be:	1c 8a       	std	Y+20, r1	; 0x14
+
+						UART_send_string("x = ");
+ 7c0:	86 e8       	ldi	r24, 0x86	; 134
+ 7c2:	94 e0       	ldi	r25, 0x04	; 4
+ 7c4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_send_string(xCoord);
+ 7c8:	ce 01       	movw	r24, r28
+ 7ca:	45 96       	adiw	r24, 0x15	; 21
+ 7cc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_send_string("\n");
+ 7d0:	83 ef       	ldi	r24, 0xF3	; 243
+ 7d2:	90 e0       	ldi	r25, 0x00	; 0
+ 7d4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_send_string("y = ");
+ 7d8:	8b e8       	ldi	r24, 0x8B	; 139
+ 7da:	94 e0       	ldi	r25, 0x04	; 4
+ 7dc:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_send_string(yCoord);
+ 7e0:	ce 01       	movw	r24, r28
+ 7e2:	41 96       	adiw	r24, 0x11	; 17
+ 7e4:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						/* Now we convert the string coordinates to integers                                                                     */
+						/************************************************************************/
+						int x;
+						int y;
+
+						x = atoi(xCoord);
+ 7e8:	ce 01       	movw	r24, r28
+ 7ea:	45 96       	adiw	r24, 0x15	; 21
+ 7ec:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+ 7f0:	8c 01       	movw	r16, r24
+						y = atoi(yCoord);
+ 7f2:	ce 01       	movw	r24, r28
+ 7f4:	41 96       	adiw	r24, 0x11	; 17
+ 7f6:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+ 7fa:	7c 01       	movw	r14, r24
+						
+						/************************************************************************/
+						/* conditionally we call the appropiate rotate functions to operate the car                                                                     */
+						/************************************************************************/
+
+						if(x>=0)
+ 7fc:	11 23       	and	r17, r17
+ 7fe:	b4 f0       	brlt	.+44     	; 0x82c <main+0x336>
+						{
+							rightRotate90();
+ 800:	0e 94 ce 01 	call	0x39c	; 0x39c <rightRotate90>
+							moveAhead(x);
+ 804:	c8 01       	movw	r24, r16
+ 806:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+
+							if(y>=0)
+ 80a:	ff 20       	and	r15, r15
+ 80c:	34 f0       	brlt	.+12     	; 0x81a <main+0x324>
+							{
+								leftRotate90();
+ 80e:	0e 94 8f 01 	call	0x31e	; 0x31e <leftRotate90>
+								moveAhead(y);
+ 812:	c7 01       	movw	r24, r14
+ 814:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+ 818:	21 c0       	rjmp	.+66     	; 0x85c <main+0x366>
+							}
+							else
+							{
+								rightRotate90();
+ 81a:	0e 94 ce 01 	call	0x39c	; 0x39c <rightRotate90>
+								moveAhead(-y);
+ 81e:	88 27       	eor	r24, r24
+ 820:	99 27       	eor	r25, r25
+ 822:	8e 19       	sub	r24, r14
+ 824:	9f 09       	sbc	r25, r15
+ 826:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+ 82a:	18 c0       	rjmp	.+48     	; 0x85c <main+0x366>
+							}
+						}
+						else
+						{
+							leftRotate90();
+ 82c:	0e 94 8f 01 	call	0x31e	; 0x31e <leftRotate90>
+							moveAhead(-x);
+ 830:	88 27       	eor	r24, r24
+ 832:	99 27       	eor	r25, r25
+ 834:	80 1b       	sub	r24, r16
+ 836:	91 0b       	sbc	r25, r17
+ 838:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+
+							if(y>=0)
+ 83c:	ff 20       	and	r15, r15
+ 83e:	34 f0       	brlt	.+12     	; 0x84c <main+0x356>
+							{
+								rightRotate90();
+ 840:	0e 94 ce 01 	call	0x39c	; 0x39c <rightRotate90>
+								moveAhead(y);
+ 844:	c7 01       	movw	r24, r14
+ 846:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+ 84a:	08 c0       	rjmp	.+16     	; 0x85c <main+0x366>
+							}
+							else
+							{
+								leftRotate90();
+ 84c:	0e 94 8f 01 	call	0x31e	; 0x31e <leftRotate90>
+								moveAhead(-y);
+ 850:	88 27       	eor	r24, r24
+ 852:	99 27       	eor	r25, r25
+ 854:	8e 19       	sub	r24, r14
+ 856:	9f 09       	sbc	r25, r15
+ 858:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+							}
+						}
+
+						UART_send_string("Do you want to continue operation?\n y/n\n");
+ 85c:	80 e9       	ldi	r24, 0x90	; 144
+ 85e:	94 e0       	ldi	r25, 0x04	; 4
+ 860:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+						UART_receive_string(buffer,1);
+ 864:	61 e0       	ldi	r22, 0x01	; 1
+ 866:	70 e0       	ldi	r23, 0x00	; 0
+ 868:	ce 01       	movw	r24, r28
+ 86a:	01 96       	adiw	r24, 0x01	; 1
+ 86c:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+
+						if (buffer[0] == 'n')
+ 870:	89 81       	ldd	r24, Y+1	; 0x01
+ 872:	8e 36       	cpi	r24, 0x6E	; 110
+ 874:	09 f0       	breq	.+2      	; 0x878 <__stack+0x19>
+ 876:	80 cf       	rjmp	.-256    	; 0x778 <main+0x282>
+							break;
+						}
+					}
+				}
+
+				if (a == 'm') //this option moves the car in forward direction to a certain coordinate
+ 878:	80 91 fd 04 	lds	r24, 0x04FD	; 0x8004fd <a>
+ 87c:	8d 36       	cpi	r24, 0x6D	; 109
+ 87e:	09 f0       	breq	.+2      	; 0x882 <__stack+0x23>
+ 880:	6f ce       	rjmp	.-802    	; 0x560 <main+0x6a>
+				{
+					UART_send_string("Give unit in feet to move forward\n");
+ 882:	89 eb       	ldi	r24, 0xB9	; 185
+ 884:	94 e0       	ldi	r25, 0x04	; 4
+ 886:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+					UART_receive_string(buffer, 3);
+ 88a:	63 e0       	ldi	r22, 0x03	; 3
+ 88c:	70 e0       	ldi	r23, 0x00	; 0
+ 88e:	ce 01       	movw	r24, r28
+ 890:	01 96       	adiw	r24, 0x01	; 1
+ 892:	0e 94 66 00 	call	0xcc	; 0xcc <UART_receive_string>
+
+					int unit = atoi(buffer);
+ 896:	ce 01       	movw	r24, r28
+ 898:	01 96       	adiw	r24, 0x01	; 1
+ 89a:	0e 94 82 04 	call	0x904	; 0x904 <atoi>
+					if (unit <= 0)
+ 89e:	18 16       	cp	r1, r24
+ 8a0:	19 06       	cpc	r1, r25
+ 8a2:	2c f0       	brlt	.+10     	; 0x8ae <__stack+0x4f>
+					{
+						UART_send_string("Send positive unit\n");
+ 8a4:	8c ed       	ldi	r24, 0xDC	; 220
+ 8a6:	94 e0       	ldi	r25, 0x04	; 4
+ 8a8:	0e 94 57 00 	call	0xae	; 0xae <UART_send_string>
+ 8ac:	59 ce       	rjmp	.-846    	; 0x560 <main+0x6a>
+					}
+					else{
+						moveAhead(unit);
+ 8ae:	0e 94 1c 02 	call	0x438	; 0x438 <moveAhead>
+ 8b2:	56 ce       	rjmp	.-852    	; 0x560 <main+0x6a>
+
+000008b4 <__divmodhi4>:
+ 8b4:	97 fb       	bst	r25, 7
+ 8b6:	07 2e       	mov	r0, r23
+ 8b8:	16 f4       	brtc	.+4      	; 0x8be <__divmodhi4+0xa>
+ 8ba:	00 94       	com	r0
+ 8bc:	07 d0       	rcall	.+14     	; 0x8cc <__divmodhi4_neg1>
+ 8be:	77 fd       	sbrc	r23, 7
+ 8c0:	09 d0       	rcall	.+18     	; 0x8d4 <__divmodhi4_neg2>
+ 8c2:	0e 94 6e 04 	call	0x8dc	; 0x8dc <__udivmodhi4>
+ 8c6:	07 fc       	sbrc	r0, 7
+ 8c8:	05 d0       	rcall	.+10     	; 0x8d4 <__divmodhi4_neg2>
+ 8ca:	3e f4       	brtc	.+14     	; 0x8da <__divmodhi4_exit>
+
+000008cc <__divmodhi4_neg1>:
+ 8cc:	90 95       	com	r25
+ 8ce:	81 95       	neg	r24
+ 8d0:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8d2:	08 95       	ret
+
+000008d4 <__divmodhi4_neg2>:
+ 8d4:	70 95       	com	r23
+ 8d6:	61 95       	neg	r22
+ 8d8:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000008da <__divmodhi4_exit>:
+ 8da:	08 95       	ret
+
+000008dc <__udivmodhi4>:
+ 8dc:	aa 1b       	sub	r26, r26
+ 8de:	bb 1b       	sub	r27, r27
+ 8e0:	51 e1       	ldi	r21, 0x11	; 17
+ 8e2:	07 c0       	rjmp	.+14     	; 0x8f2 <__udivmodhi4_ep>
+
+000008e4 <__udivmodhi4_loop>:
+ 8e4:	aa 1f       	adc	r26, r26
+ 8e6:	bb 1f       	adc	r27, r27
+ 8e8:	a6 17       	cp	r26, r22
+ 8ea:	b7 07       	cpc	r27, r23
+ 8ec:	10 f0       	brcs	.+4      	; 0x8f2 <__udivmodhi4_ep>
+ 8ee:	a6 1b       	sub	r26, r22
+ 8f0:	b7 0b       	sbc	r27, r23
+
+000008f2 <__udivmodhi4_ep>:
+ 8f2:	88 1f       	adc	r24, r24
+ 8f4:	99 1f       	adc	r25, r25
+ 8f6:	5a 95       	dec	r21
+ 8f8:	a9 f7       	brne	.-22     	; 0x8e4 <__udivmodhi4_loop>
+ 8fa:	80 95       	com	r24
+ 8fc:	90 95       	com	r25
+ 8fe:	bc 01       	movw	r22, r24
+ 900:	cd 01       	movw	r24, r26
+ 902:	08 95       	ret
+
+00000904 <atoi>:
+ 904:	fc 01       	movw	r30, r24
+ 906:	88 27       	eor	r24, r24
+ 908:	99 27       	eor	r25, r25
+ 90a:	e8 94       	clt
+ 90c:	21 91       	ld	r18, Z+
+ 90e:	20 32       	cpi	r18, 0x20	; 32
+ 910:	e9 f3       	breq	.-6      	; 0x90c <atoi+0x8>
+ 912:	29 30       	cpi	r18, 0x09	; 9
+ 914:	10 f0       	brcs	.+4      	; 0x91a <atoi+0x16>
+ 916:	2e 30       	cpi	r18, 0x0E	; 14
+ 918:	c8 f3       	brcs	.-14     	; 0x90c <atoi+0x8>
+ 91a:	2b 32       	cpi	r18, 0x2B	; 43
+ 91c:	41 f0       	breq	.+16     	; 0x92e <atoi+0x2a>
+ 91e:	2d 32       	cpi	r18, 0x2D	; 45
+ 920:	39 f4       	brne	.+14     	; 0x930 <atoi+0x2c>
+ 922:	68 94       	set
+ 924:	04 c0       	rjmp	.+8      	; 0x92e <atoi+0x2a>
+ 926:	0e 94 ab 04 	call	0x956	; 0x956 <__mulhi_const_10>
+ 92a:	82 0f       	add	r24, r18
+ 92c:	91 1d       	adc	r25, r1
+ 92e:	21 91       	ld	r18, Z+
+ 930:	20 53       	subi	r18, 0x30	; 48
+ 932:	2a 30       	cpi	r18, 0x0A	; 10
+ 934:	c0 f3       	brcs	.-16     	; 0x926 <atoi+0x22>
+ 936:	1e f4       	brtc	.+6      	; 0x93e <atoi+0x3a>
+ 938:	90 95       	com	r25
+ 93a:	81 95       	neg	r24
+ 93c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 93e:	08 95       	ret
+
+00000940 <__itoa_ncheck>:
+ 940:	bb 27       	eor	r27, r27
+ 942:	4a 30       	cpi	r20, 0x0A	; 10
+ 944:	31 f4       	brne	.+12     	; 0x952 <__itoa_ncheck+0x12>
+ 946:	99 23       	and	r25, r25
+ 948:	22 f4       	brpl	.+8      	; 0x952 <__itoa_ncheck+0x12>
+ 94a:	bd e2       	ldi	r27, 0x2D	; 45
+ 94c:	90 95       	com	r25
+ 94e:	81 95       	neg	r24
+ 950:	9f 4f       	sbci	r25, 0xFF	; 255
+ 952:	0c 94 b4 04 	jmp	0x968	; 0x968 <__utoa_common>
+
+00000956 <__mulhi_const_10>:
+ 956:	7a e0       	ldi	r23, 0x0A	; 10
+ 958:	97 9f       	mul	r25, r23
+ 95a:	90 2d       	mov	r25, r0
+ 95c:	87 9f       	mul	r24, r23
+ 95e:	80 2d       	mov	r24, r0
+ 960:	91 0d       	add	r25, r1
+ 962:	11 24       	eor	r1, r1
+ 964:	08 95       	ret
+
+00000966 <__utoa_ncheck>:
+ 966:	bb 27       	eor	r27, r27
+
+00000968 <__utoa_common>:
+ 968:	fb 01       	movw	r30, r22
+ 96a:	55 27       	eor	r21, r21
+ 96c:	aa 27       	eor	r26, r26
+ 96e:	88 0f       	add	r24, r24
+ 970:	99 1f       	adc	r25, r25
+ 972:	aa 1f       	adc	r26, r26
+ 974:	a4 17       	cp	r26, r20
+ 976:	10 f0       	brcs	.+4      	; 0x97c <__utoa_common+0x14>
+ 978:	a4 1b       	sub	r26, r20
+ 97a:	83 95       	inc	r24
+ 97c:	50 51       	subi	r21, 0x10	; 16
+ 97e:	b9 f7       	brne	.-18     	; 0x96e <__utoa_common+0x6>
+ 980:	a0 5d       	subi	r26, 0xD0	; 208
+ 982:	aa 33       	cpi	r26, 0x3A	; 58
+ 984:	08 f0       	brcs	.+2      	; 0x988 <__utoa_common+0x20>
+ 986:	a9 5d       	subi	r26, 0xD9	; 217
+ 988:	a1 93       	st	Z+, r26
+ 98a:	00 97       	sbiw	r24, 0x00	; 0
+ 98c:	79 f7       	brne	.-34     	; 0x96c <__utoa_common+0x4>
+ 98e:	b1 11       	cpse	r27, r1
+ 990:	b1 93       	st	Z+, r27
+ 992:	11 92       	st	Z+, r1
+ 994:	cb 01       	movw	r24, r22
+ 996:	0c 94 cd 04 	jmp	0x99a	; 0x99a <strrev>
+
+0000099a <strrev>:
+ 99a:	dc 01       	movw	r26, r24
+ 99c:	fc 01       	movw	r30, r24
+ 99e:	67 2f       	mov	r22, r23
+ 9a0:	71 91       	ld	r23, Z+
+ 9a2:	77 23       	and	r23, r23
+ 9a4:	e1 f7       	brne	.-8      	; 0x99e <strrev+0x4>
+ 9a6:	32 97       	sbiw	r30, 0x02	; 2
+ 9a8:	04 c0       	rjmp	.+8      	; 0x9b2 <strrev+0x18>
+ 9aa:	7c 91       	ld	r23, X
+ 9ac:	6d 93       	st	X+, r22
+ 9ae:	70 83       	st	Z, r23
+ 9b0:	62 91       	ld	r22, -Z
+ 9b2:	ae 17       	cp	r26, r30
+ 9b4:	bf 07       	cpc	r27, r31
+ 9b6:	c8 f3       	brcs	.-14     	; 0x9aa <strrev+0x10>
+ 9b8:	08 95       	ret
+
+000009ba <_exit>:
+ 9ba:	f8 94       	cli
+
+000009bc <__stop_program>:
+ 9bc:	ff cf       	rjmp	.-2      	; 0x9bc <__stop_program>
